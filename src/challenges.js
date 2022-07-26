@@ -102,12 +102,55 @@ function fizzBuzz(array) {
 console.log(fizzBuzz([2, 15, 7, 9, 45]));
 
 // Desafio 9
-function encode() {
-  // seu código aqui
+function encode(string) {
+  let stringToArray = string.split("");
+
+    for(let index in stringToArray){
+        if(stringToArray[index] === 'a'){
+            stringToArray[index] = '1';
+        } else if (stringToArray[index] === 'e'){
+            stringToArray[index] = '2';
+        } else if (stringToArray[index] === 'i'){
+            stringToArray[index] = '3';
+        } else if (stringToArray[index] === 'o'){
+            stringToArray[index] = '4';
+        } else if (stringToArray[index] === 'u'){
+            stringToArray[index] = '5';
+        } else {
+            stringToArray[index] = stringToArray[index];
+        }
+    }
+
+    let arrayToString = stringToArray.join('')
+    return (arrayToString);
+  }
+  
+  console.log(encode('hi there!'));
+
+function decode(string) {
+  let stringToArray = string.split("");
+
+  for(let index in stringToArray){
+      if(stringToArray[index] === '1'){
+          stringToArray[index] = 'a';
+      } else if (stringToArray[index] === '2'){
+          stringToArray[index] = 'e';
+      } else if (stringToArray[index] === '3'){
+          stringToArray[index] = 'i';
+      } else if (stringToArray[index] === '4'){
+          stringToArray[index] = 'o';
+      } else if (stringToArray[index] === '5'){
+          stringToArray[index] = 'u';
+      } else {
+          stringToArray[index] = stringToArray[index];
+      }
+  }
+
+  let arrayToString = stringToArray.join('')
+  return (arrayToString);
 }
-function decode() {
-  // seu código aqui
-}
+
+console.log(decode('h3 th2r2!'));
 
 // Desafio 10
 function techList() {
