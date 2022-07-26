@@ -19,9 +19,13 @@ console.log(splitSentence("be trybe"));
 
 
 // Desafio 4
-function concatName() {
-  // seu código aqui
+function concatName(array) {
+  let primeiroNome = array[0];
+  let ultimoNome = array[array.length - 1];
+  return (ultimoNome + ", " + primeiroNome);
 }
+console.log(concatName(['Lucas', 'Cassiano', 'Ferraz', 'Paolillo']));
+
 
 // Desafio 5
 function footballPoints() {
