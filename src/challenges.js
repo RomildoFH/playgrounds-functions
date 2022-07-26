@@ -1,6 +1,29 @@
 // Desafio 1
-function compareTrue() {
-  // seu código aqui
+const girafa = true;
+const elefante = true;
+const macaco = false;       
+function compareTrue(valor1, valor2){
+    resultado1 = false;
+    resultado2 = false;
+    resultadoGeral = false;
+
+    if (valor1 === true){
+        resultado1 = true;
+    } else {
+        resultado1 = false;
+    }
+
+    if (valor2 === true){
+        resultado2 = true;
+    } else {
+        resultado2 = false;
+    }
+
+    if (resultado1 === true && resultado2 === true){
+        resultadoGeral = true;
+    }  
+
+    return(resultadoGeral);
 }
 
 // Desafio 2
@@ -15,25 +38,18 @@ function splitSentence(string) {
   return (resultado);
 }
 
-console.log(splitSentence("be trybe"));
-
-
 // Desafio 4
 function concatName(array) {
   let primeiroNome = array[0];
   let ultimoNome = array[array.length - 1];
   return (ultimoNome + ", " + primeiroNome);
 }
-console.log(concatName(['Lucas', 'Cassiano', 'Ferraz', 'Paolillo']));
-
 
 // Desafio 5
 function footballPoints(wins, ties) {
   resultado = wins * 3 + ties;
   return (resultado);  
 }
-
-console.log(footballPoints(14, 8));
 
 // Desafio 6
 function highestCount(array) {
@@ -51,8 +67,6 @@ function highestCount(array) {
   }
   return (repeticao);
 }
-console.log(highestCount([9, 1, 2, 3, 9, 5, 7]))
-
 
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
@@ -79,8 +93,6 @@ function catAndMouse(mouse, cat1, cat2) {
   }
 }
 
-console.log(catAndMouse(1, 0, 2));
-
 // Desafio 8
 function fizzBuzz(array) {
   let resultado = [];
@@ -98,8 +110,6 @@ function fizzBuzz(array) {
   }
   return (resultado);
 }
-
-console.log(fizzBuzz([2, 15, 7, 9, 45]));
 
 // Desafio 9
 function encode(string) {
@@ -123,10 +133,8 @@ function encode(string) {
 
     let arrayToString = stringToArray.join('')
     return (arrayToString);
-  }
+}
   
-  console.log(encode('hi there!'));
-
 function decode(string) {
   let stringToArray = string.split("");
 
