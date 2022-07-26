@@ -153,8 +153,20 @@ function decode(string) {
 console.log(decode('h3 th2r2!'));
 
 // Desafio 10
-function techList() {
-  // seu código aqui
+function techList(techs, name) {
+  let array = techs;
+  let nome = name;
+  let arraySorted = array.sort();
+  let arrayObjetos = [];
+  
+  if(array.length === 0){
+      return ("Vazio!")
+  } else {
+      for (let index = 0; index < arraySorted.length; index ++){
+          arrayObjetos.push({tech: arraySorted[index], name: nome})
+      }
+      return(arrayObjetos);
+  }  
 }
 
 module.exports = {
