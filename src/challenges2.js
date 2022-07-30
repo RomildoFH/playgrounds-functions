@@ -67,9 +67,39 @@ function generatePhoneNumber(array) {
 }
 
 // Desafio 12
-function triangleCheck() {
-  // seu código aqui
+function triangleCheck(lineA, lineB, lineC) {
+  // Exemplo: o retorno de triangleCheck(10, 14, 8) deverá ser true.
+
+  // O que será testado:
+
+  // A função triangleCheck deve retornar o valor false quando a medida de qualquer um dos lados seja maior que a soma das medidas dos outros dois lados;
+
+  // A função triangleCheck deve retornar o valor false quando a medida de qualquer um dos lados seja menor que o valor absoluto da diferença das medidas dos outros dois lados;
+
+  // A função triangleCheck deve retornar o valor true quando a medida de qualquer um dos lados seja menor que a soma das medidas dos outros dois lados e maior que o valor absoluto da diferença entre os outros dois lados.
+  let arrayLinhas = [lineA, lineB, lineC];
+  let somaAB = lineA + lineB;
+  let somaAC = lineA + lineC;
+  let somaBC = lineB + lineC;
+  let minusAB = Math.abs (lineA - lineB);
+  let minusAC = Math.abs (lineA - lineC);
+  let minusBC = Math.abs (lineA - lineC);
+  let statusTamanhoLinhas = false;
+
+  for (var index in arrayLinhas){
+    let linhaAtual = arrayLinhas[index];
+    if (linhaAtual > somaAB || linhaAtual > somaAC || linhaAtual > somaBC) {
+        statusTamanhoLinhas = false;
+    } else if (linhaAtual < minusAB || linhaAtual < minusAC || linhaAtual < minusBC) {
+      statusTamanhoLinhas = false;
+    } else {
+      statusTamanhoLinhas = true;
+    }
+  }
+  return(statusTamanhoLinhas);
 }
+
+triangleCheck(10, 14, 8);
 
 // Desafio 13
 function hydrate() {
