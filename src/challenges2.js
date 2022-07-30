@@ -77,33 +77,101 @@ function triangleCheck(lineA, lineB, lineC) {
   // A função triangleCheck deve retornar o valor false quando a medida de qualquer um dos lados seja menor que o valor absoluto da diferença das medidas dos outros dois lados;
 
   // A função triangleCheck deve retornar o valor true quando a medida de qualquer um dos lados seja menor que a soma das medidas dos outros dois lados e maior que o valor absoluto da diferença entre os outros dois lados.
-  let arrayLinhas = [lineA, lineB, lineC];
-  let somaAB = lineA + lineB;
-  let somaAC = lineA + lineC;
-  let somaBC = lineB + lineC;
-  let minusAB = Math.abs (lineA - lineB);
-  let minusAC = Math.abs (lineA - lineC);
-  let minusBC = Math.abs (lineA - lineC);
-  let statusTamanhoLinhas = false;
 
-  for (var index in arrayLinhas){
+  //Opção 01: cirando variáveis para as somas e substrações, limitado a 3 linhas:
+
+  // let arrayLinhas = [lineA, lineB, lineC];
+
+  // let somaAB = lineA + lineB;
+  // let somaAC = lineA + lineC;
+  // let somaBC = lineB + lineC;
+  // let minusAB = Math.abs (lineA - lineB);
+  // let minusAC = Math.abs (lineA - lineC);
+  // let minusBC = Math.abs (lineA - lineC);
+  // let statusTamanhoLinhas = false;
+  //   for (var index in arrayLinhas){
+  //     let linhaAtual = arrayLinhas[index];
+  //     if (linhaAtual > somaAB || linhaAtual > somaAC || linhaAtual > somaBC) {
+  //         statusTamanhoLinhas = false;
+  //     } else if (linhaAtual < minusAB || linhaAtual < minusAC || linhaAtual < minusBC) {
+  //       statusTamanhoLinhas = false;
+  //     } else {
+  //       statusTamanhoLinhas = true;
+  //     }
+  //   }
+  //   return(statusTamanhoLinhas);
+  // }
+  // triangleCheck(10, 14, 8);
+
+  //Opção 2: aplicando estrutura loop for para realizar operações com números independente da quantidade de linhas:
+  
+  let arrayLinhas = [lineA, lineB, lineC];
+  
+  let primeiraSoma = arrayLinhas[0] + arrayLinhas[1];
+  let somaMinima = primeiraSoma;
+  let primeiraSubtracao = arrayLinhas[0] - arrayLinhas[1];
+  let subtracaoMaxima = Math.abs (primeiraSubtracao);
+  let statusTamanho = false;
+
+  for (var index = 0; index < arrayLinhas.length -1; index ++){
     let linhaAtual = arrayLinhas[index];
-    if (linhaAtual > somaAB || linhaAtual > somaAC || linhaAtual > somaBC) {
-        statusTamanhoLinhas = false;
-    } else if (linhaAtual < minusAB || linhaAtual < minusAC || linhaAtual < minusBC) {
-      statusTamanhoLinhas = false;
-    } else {
-      statusTamanhoLinhas = true;
+
+    //for para encontrar a menor soma, já que as linhas devem ser menor que o somatório das outras duas
+    for (var index2 = index + 1; index2 < arrayLinhas.length; index2 ++){
+      let proximaLinha = arrayLinhas[index2];
+      if (somaMinima > linhaAtual + proximaLinha){
+        somaMinima = linhaAtual + proximaLinha;
+      }
+    }
+    for (var index2 = index + 1; index2 < arrayLinhas.length; index2 ++){
+      let proximaLinha = arrayLinhas[index2];
+      if (subtracaoMaxima < Math.abs (linhaAtual - proximaLinha)){
+          subtracaoMaxima = Math.abs (linhaAtual - proximaLinha);
+      }
     }
   }
-  return(statusTamanhoLinhas);
-}
 
+  for (var index = 0; index < arrayLinhas.length; index ++){
+      let linhaAtual = arrayLinhas[index];
+      if (linhaAtual < somaMinima && linhaAtual > subtracaoMaxima){
+          statusTamanho = true;
+      }
+  }
+  return(statusTamanho);
+}
 triangleCheck(10, 14, 8);
 
 // Desafio 13
-function hydrate() {
-  // seu código aqui
+function hydrate(string) {
+  //O método para extrair números de uma string, foi encontrado através do canal All Things JavaScript, LLC. Que pode ser visto através do link: https://www.youtube.com/watch?v=pfkkdzeyx6U 
+
+  let reg = /\d+/g;
+
+  let arrayStringNumeros = string.match(reg);
+
+  let arrayNumeros = [];
+
+  let coposDeAgua = 0;
+
+  for (var index = 0; index < arrayStringNumeros.length; index ++){
+      let numeroAtual = parseInt (arrayStringNumeros[index]);
+      arrayNumeros.push(numeroAtual);
+      coposDeAgua += numeroAtual
+  }
+  let resultado = coposDeAgua
+
+  if (coposDeAgua === 1){
+    resultado = coposDeAgua + ' copo de água'
+  } else {
+    resultado = coposDeAgua + ' copos de água'
+  }
+
+  // console.log(arrayStringNumbers);
+  // console.log(arrayNumeros);
+  // console.log(coposDeAgua);
+  // console.log(resultado);
+  
+  return (resultado);
 }
 
 module.exports = {
